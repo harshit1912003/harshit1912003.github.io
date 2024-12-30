@@ -3,192 +3,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Harshit Joshi</title>
-    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
+<body>
 
 <div class="container">
+    <div class="flex-container">
+        <div class="left-column">
+            <b><font size="+3">im harshit :D</font></b>
+            <p class="about-text">currently pursuing msc mathematics @ iit delhi</p>
+            <p class="about-text">research interests include machine learning, optimization and computer vision</p>
+            <p class = "email">mas237141[at]iitd[dot]ac[dot]in</p>
+            
+            <div class="section-links">
+                <span class="section-title">education</span>
+                <ul class="subsection">
+                    <li>msc mathematics @ iitd</li>
+                    <li>bsc mathematics @ hansraj college</li>
+                </ul>
+                <span class="section-title">experience</span>
+                <ul class="subsection">
+                    <li>ml engineering intern @ swachh.io</li>
+                    <li>research internship under Dr Aparna Mehra (hod, maths iitd)</li>
+                </ul>
+                <span class="section-title">projects</span>
+                <ul class="subsection">
+                    <li><a href="https://github.com/harshit1912003/SGBS" class="project-link">stauffer grimson background subtraction</a></li>
+                    <li><a href="https://github.com/harshit1912003/FisherFaces-and-EigenFaces" class="project-link">fisherfaces and eigenfaces</a></li>
+                    <li><a href="https://github.com/harshit1912003/sift" class="project-link">scale-invariant feature transform</a></li>
+                    <li><a href="https://github.com/harshit1912003/AxelrodsTournament" class="project-link">axelrod’s tournament</a></li>
+                    <li><a href="https://github.com/harshit1912003/MusicRecommender" class="project-link">music recommendation system</a></li>
+                </ul>
+                <a href="..." class="page-link">master's thesis [ongoing][deadlink]</a>
+                <a href="./HarshitJoshi.pdf" class="page-link">cv.pdf</a>
+            </div>
+        </div>
+        
+        <div class="right-column">
+            <div class="image-container">
+                <img src="./imghar.jpeg" alt="image">
+            </div>
+        </div>
+    </div>
 
-<table style="width: 100%;">
-    <tbody>
-        <tr>
-            <td style="width: 65%;">
-                <b><font size="+3">Harshit Joshi</font></b>
-                <div class="about-title">About Me:</div>
-                <p class="about-text">Postgraduate student in mathematics. 
-                    <br>My research interests include: 
-                    <br><b>Mathematics:</b> Optimization, Data Envelopment Analysis, Linear Algebra, Game Theory
-                    <br><b>Machine Learning:</b> Computer Vision, NLP, Linear Algebra, Game Theory </p>
-
-                <p<b>Email Address: <span class="email"><font color = "navy"> hj1912003@gmail.com </font> </span></b></p>
-
-                <div class="section">
-                    <div class="section-title">Education</div>
-                    <div class="section-content">
-                        <p class="topic"><b>M.Sc Mathematics</b> Indian Institute of Technology, Delhi</p>
-                        <p class="topic"><b>B.Sc Mathematics</b> Hans Raj College, Delhi</p>
-                    </div>
-                </div>
-
-                <div class="section">
-                    <div class="section-title">Experience</div>
-                    <div class="section-content">
-                        <p class="topic"><b>Intern, Swachh.io – New Delhi</b></p>
-                        <p class="content">Architected a Vehicle Emission Detection model for Indian vehicles using a YOLOv8 model trained on a custom dataset compiled from various internet sources. Integrated Automatic Number Plate Recognition (ANPR) to identify polluting vehicles. Achieved 89.5% precision, 80.7% recall, 88.4% mAP50, and 62.7% mAP50-95 across all classes.</p>
-                        <p class="content">Developed a Python script using BeautifulSoup to scrape number of classrooms from approximately 8,500 schools across clusters in Tumkur, Chitradurga, and Ballari districts, Karnataka.</p>
-                        <p class="content">Designed and implemented statistical methods to assess product filtration efficiency with subsequent data analysis.</p>
-                    </div>
-                </div>
-                
-                <div class="section">
-                    <div class="section-title">Projects</div>
-                    <div class="section-content">
-                        <p class="topic">
-                            <b>Stauffer Grimson Background Subtraction</b>
-                            <a href="https://github.com/harshit1912003/SGBS" target="_blank">
-                                <img src="./external-link.png" alt="Link Icon" style="width: 15px; height: 15px; margin-left: 5px; vertical-align: middle;">
-                            </a>
-                        </p>
-                        <p class="content">Implemented Stauffer Grimson Background Subtraction Algorithm from scratch using OpenCV to segment out background and foreground frames generating respective video files.</p>
-                        <p class="content">Used Gaussian Models to filter out the outlying pixel values across time at fixed spatial positions.</p>
-                
-                        <p class="topic">
-                            <b>FisherFaces and EigenFaces</b>
-                            <a href="https://github.com/harshit1912003/FisherFaces-and-EigenFaces" target="_blank">
-                                <img src="./external-link.png" alt="Link Icon" style="width: 15px; height: 15px; margin-left: 5px; vertical-align: middle;">
-                            </a>
-                        </p>
-                        <p class="content">Implemented PCA for dimensionality reduction and FLD for class separability to improve facial recognition.</p>
-                        <p class="content">Evaluated performance differentials on Yale Face Dataset B using EigenFaces (50% accuracy) and FisherFaces (90% accuracy) under varied lighting conditions.</p>
-                
-                        <p class="topic">
-                            <b>Axelrod’s Tournament</b>
-                            <a href="https://github.com/harshit1912003/AxelrodsTournament" target="_blank">
-                                <img src="./external-link.png" alt="Link Icon" style="width: 15px; height: 15px; margin-left: 5px; vertical-align: middle;">
-                            </a>
-                        </p>
-                        <p class="content">Built a Python simulation of the Prisoner’s Dilemma, featuring multiple strategies such as Tit-for-Tat, Random, Friedman, Joss, and Harrington with flexibility for users to customize and add their own strategies.</p>
-                        <p class="content">Implemented a tournament framework to evaluate the effectiveness of strategies, using cumulative payoff tracking and graphical result representation.</p>
-                
-                        <p class="topic">
-                            <b>Automatic Speech Recognition - Hindi</b>
-                            <a href="https://huggingface.co/spaces/HarshitJoshi/ASR-Hindi" target="_blank">
-                                <img src="./external-link.png" alt="Link Icon" style="width: 15px; height: 15px; margin-left: 5px; vertical-align: middle;">
-                            </a>
-                        </p>
-                        <p class="content">Fine-tuned OpenAI’s Whisper model on Mozilla’s Common Voice Corpus 13.0 for Hindi, reducing the Word Error Rate from 85.95% to 19.86% on normalized text.</p>
-                        <p class="content">Built a Gradio Interface and hosted the model on HuggingFace Spaces to showcase the model.</p>
-                
-                        <p class="topic">
-                            <b>Music Genre Classifier</b>
-                            <a href="https://huggingface.co/spaces/HarshitJoshi/MusicGenreClassif" target="_blank">
-                                <img src="./external-link.png" alt="Link Icon" style="width: 15px; height: 15px; margin-left: 5px; vertical-align: middle;">
-                            </a>
-                        </p>
-                        <p class="content">Designed a Music Genre Classifier with audio inputs by finetuning distilHuBERT model on the GTZAN dataset, implemented dropout regularization to achieve a best evaluation accuracy of 86%.</p>
-                        <p class="content">Built a Gradio Interface and hosted the model on HuggingFace Spaces to showcase the model.</p>
-                
-                        <p class="topic">
-                            <b>Music Recommendation System</b>
-                            <a href="https://github.com/harshit1912003/MusicRecommender" target="_blank">
-                                <img src="./external-link.png" alt="Link Icon" style="width: 15px; height: 15px; margin-left: 5px; vertical-align: middle;">
-                            </a>
-                        </p>
-                        <p class="content">Engineered a music recommendation system by calculating Cosine similarity scores between the user input and a library of 114,000 songs.</p>
-                    </div>
-                </div>
-                                
-                <div class="section">
-                    <div class="section-title">Master's Thesis</div>
-                    <div class="section-content">
-                        <p class="topic"></p>
-                    </div>
-                </div>
-                <div class="section">
-                    <div class="section-title">Technical Skills</div>
-                    <div class="section-content">
-                        <p class="topic"><b>Programming</b></p>
-                        <p class="content">Python, C, C++, R, SQL, Git/GitHub</p>
-                        
-                        <p class="topic"><b>Tools/Libraries</b></p>
-                        <p class="content">Numpy, Pandas, OpenCV, PyTorch, TensorFlow, Keras, BeautifulSoup, Selenium, HuggingFace</p>
-
-                        <p class="topic"><b>Data Visualization</b></p>
-                        <p class="content">Matplotlib, Seaborn, Tableau, ggplot, Excel</p>
-                    </div>
-                </div>
-
-
-                <div class="section">
-                    <div class="section-title">Extra Curricular Activities</div>
-                    <div class="section-content">
-                        <p class="topic"><b>Co-Author</b> In Search of the Perfect Story (Quill Club Writers, 2018)</p>
-                        <p class="topic"><b>Volunteer</b> Mathematics Society, IITD (2023-2024)</p>
-                    </div>
-                </div>
-
-                <div class="section">
-                    <div class="section-title">Certifications</div>
-                    <div class="section-content">
-                        <p class="topic">
-                            Machine Learning in Production</b>
-                            <a href="https://www.coursera.org/account/accomplishments/verify/BPH7ESSTC3V6?utm_source=link&utm_medium=certificate&utm_content=cert_image&utm_campaign=sharing_cta&utm_product=course" target="_blank">
-                                <img src="./external-link.png" alt="Link Icon" style="width: 15px; height: 15px; margin-left: 5px; vertical-align: middle;">
-                            </a>
-                        </p>
-                        <p class="topic">
-                            OpenCV Bootcamp
-                            <a href="https://courses.opencv.org/certificates/83f4b5e646874d7cb2468e3df5c739ea" target="_blank">
-                                <img src="./external-link.png" alt="Link Icon" style="width: 15px; height: 15px; margin-left: 5px; vertical-align: middle;">
-                            </a>
-                        </p>
-                        <p class="topic">
-                            Google Data Analytics
-                            <a href="https://www.coursera.org/account/accomplishments/specialization/9MHU9KJH8ZVT?utm_source=link&utm_medium=certificate&utm_content=cert_image&utm_campaign=sharing_cta&utm_product=prof" target="_blank">
-                                <img src="./external-link.png" alt="Link Icon" style="width: 15px; height: 15px; margin-left: 5px; vertical-align: middle;">
-                            </a>
-                        </p>
-                    </div>
-                </div>
-
-                <div class="section">
-                    <div class="section-title">Curriculum Vitae</div>
-                    <div class="section-content">
-                        <p class="topic">
-                            <a href="./HarshitJoshi.pdf">Download CV <img src="./external-link.png" alt="Link Icon" style="width: 15px; height: 15px; margin-left: 5px; vertical-align: middle;"></a></p>
-                        
-                    </div>
-                </div>
-
-                <div class="connect-block">
-                    <p><i>Connect with me:</i></p>
-                    <a href="https://linkedin.com/in/harshitjoshi2003" target="_blank">
-                        <img src="./linkedin.png" alt="LinkedIn" class="social-icon">
-                    </a>
-                    <a href="https://github.com/harshit1912003" target="_blank">
-                        <img src="./github.png" alt="GitHub" class="social-icon">
-                    </a>
-                    <a href="https://x.com/Harshit1912003" target="_blank">
-                        <img src="./twitter.png" alt="X" class="social-icon">
-                    </a>
-                    <a href="https://huggingface.co/HarshitJoshi" target="_blank">
-                        <img src="./hflogo.svg" alt="hf" class="social-icon">
-                    </a>
-
-                </div>
-                
-
-            </td>
-            <td style="width: 35%; text-align:right">
-                <!-- Embedded vector image (example placeholder) -->
-                <img src="./136372128.png" alt="Embedded vector image" height="550" style="padding: 60px; margin: 0 auto;">
-            </td>
-        </tr>
-    </tbody>
-</table>
-
+    <div class="connect-block">
+        <p><i>Connect with me:</i></p>
+        <a href="https://linkedin.com/in/harshitjoshi2003" target="_blank">
+            <img src="./linkedin.png" alt="LinkedIn" class="social-icon">
+        </a>
+        <a href="https://github.com/harshit1912003" target="_blank">
+            <img src="./github.png" alt="GitHub" class="social-icon">
+        </a>
+        <a href="https://huggingface.co/HarshitJoshi" target="_blank">
+            <img src="./hflogo.svg" alt="HuggingFace" class="social-icon">
+        </a>
+    </div>
 </div>
 
-<script src="./script.js" defer></script>
+<script src="js/script.js" defer></script>
 
 </body>
 </html>
+

@@ -1,67 +1,291 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Harshit Joshi</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <title>Harshit Joshi - Personal Page</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome 5 CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Google Fonts: Lora (similar to Palatino used in resume) -->
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles to mimic LaTeX resume's visual feel */
+        body {
+            font-family: 'Lora', 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif;
+            font-size: 14px; /* Default text size for the page, Tailwind class 'text-sm' */
+            color: #1f2937; /* Tailwind gray-800, a common dark text color */
+            background-color: #ffffff; /* White background */
+        }
+        /* Custom link color matching 'darkblue' from LaTeX (RGB 0,0,139) */
+        .link-custom {
+            color: #00008B;
+        }
+        .link-custom:hover {
+            text-decoration: underline;
+        }
+        /* Ensure Font Awesome icons inherit the link color for social links, but allow overrides for others */
+        .link-custom i.fab, 
+        .link-custom i.fas.fa-external-link-alt,
+        .link-custom i.fas.fa-file-pdf { /* Added PDF icon */
+            color: inherit;
+        }
+        /* Styling for CGPA part to be on a new line on small screens, inline on larger */
+        .cgpa-block { display: block; } /* Default for mobile */
+        @media (min-width: 640px) { /* sm breakpoint in Tailwind */
+            .cgpa-block { display: inline; margin-left: 0.5rem; }
+        }
+        /* Small screen adjustments for contact info separators and item display */
+        @media (max-width: 639px) { /* Below sm breakpoint */
+            .contact-separator { display: none; }
+            .contact-item { 
+                display: block; 
+                text-align: center; 
+                width: 100%; /* Ensure items take full width when stacked */
+                margin-bottom: 0.25rem; /* Add some space when stacked */
+            }
+            .contact-item:last-child {
+                margin-bottom: 0;
+            }
+        }
+    </style>
 </head>
-<body>
+<body class="text-sm">
 
-<div class="container">
-    <div class="flex-container">
-        <div class="left-column">
-            <b><font size="+3">im harshit,</font></b>
-            <p class="about-text">currently pursuing msc mathematics @ iit delhi</p>
-            <p class="about-text">research interests include machine learning, optimization and computer vision</p>
-            <p class = "email">mas237141[at]iitd[dot]ac[dot]in</p>
+    <!-- Main container mimicking LaTeX page geometry and content width -->
+    <div class="max-w-[695px] mx-auto pt-[30px] pb-[38px] px-4 sm:px-[45px] md:px-[53px]"> <!-- Responsive padding -->
+
+        <!-- Header: Profile Image, Name, and Contact Information -->
+        <header class="text-center mb-6">
             
-            <div class="section-links">
-                <span class="section-title">education</span>
-                <ul class="subsection">
-                    <li>msc mathematics @ iitd</li>
-                    <li>bsc mathematics @ hansraj college</li>
-                </ul>
-                <span class="section-title">experience</span>
-                <ul class="subsection">
-                    <li>ml engineering intern @ swachh.io</li>
-                    <li>research internship under Dr Aparna Mehra (hod, maths iitd)</li>
-                </ul>
-                <span class="section-title">projects</span>
-                <ul class="subsection">
-                    <li><a href="https://github.com/harshit1912003/SGBS" class="project-link">stauffer grimson background subtraction</a></li>
-                    <li><a href="https://github.com/harshit1912003/FisherFaces-and-EigenFaces" class="project-link">fisherfaces and eigenfaces</a></li>
-                    <li><a href="https://github.com/harshit1912003/sift" class="project-link">scale-invariant feature transform</a></li>
-                    <li><a href="https://github.com/harshit1912003/AxelrodsTournament" class="project-link">axelrod’s tournament</a></li>
-                    <li><a href="https://github.com/harshit1912003/MusicRecommender" class="project-link">music recommendation system</a></li>
-                </ul>
-                <a href="..." class="page-link">master's thesis [ongoing][deadlink]</a>
-                <a href="./HarshitJoshi.pdf" class="page-link">cv.pdf</a>
+            <div class="flex justify-center mb-3">
+                <!-- <img id="profileImage" src="/Users/harshit/harshit1912003.github.io/Image2.webp" alt="Profile Picture" class="rounded-full w-24 h-24 object-cover border-2 border-gray-300"> -->
+                <!-- 
+                    INSTRUCTIONS TO REPLACE THIS PLACEHOLDER IMAGE:
+                    1. Prepare your image:
+                       - Recommended dimensions: Square, e.g., 100x100 pixels or 150x150 pixels.
+                       - Recommended file format: JPG (for photographs) or PNG (if you need transparency or for crisp logos/graphics).
+                       - Save the image in the same folder as this HTML file, or a subfolder (e.g., 'images/profile.jpg').
+                    2. Update the HTML:
+                       - Find this `<img>` tag with `id="profileImage"`.
+                       - Change the `src` attribute from "https://via.placeholder.com/100/..." to the path of your image.
+                         For example, if your image is named 'profile.jpg' and is in the same folder:
+                         src="profile.jpg"
+                         If it's in an 'images' subfolder:
+                         src="images/profile.jpg"
+                -->
             </div>
-        </div>
+
+            <h1 class="text-[2.25rem] font-bold mb-2">Harshit Joshi</h1>
+            
+            <div class="text-xs space-y-1">
+                <!-- Line 1: Email, Portfolio -->
+                <div class="flex flex-col sm:flex-row sm:flex-wrap justify-center items-center sm:gap-x-2">
+                    <span class="contact-item"><i class="fas fa-envelope fa-fw mr-1 text-gray-600"></i>mas237141 [at] iitd [dot] ac [dot] in</span>
+                    <!-- <span class="contact-separator sm:inline">|</span>
+                    <a href="https://harshit1912003.github.io/" class="contact-item link-custom"><i class="fas fa-globe fa-fw mr-1"></i>harshit1912003.github.io</a> -->
+                </div>
+
+                <!-- Line 2: Social Media Links & CV Link -->
+                <div class="flex flex-col sm:flex-row sm:flex-wrap justify-center items-center sm:gap-x-2 mt-1 sm:mt-0">
+                    <a href="https://www.linkedin.com/in/harshitjoshi2003/" class="contact-item link-custom"><i class="fab fa-linkedin fa-fw mr-1"></i>Harshit</a>
+                    <span class="contact-separator sm:inline">|</span>
+                    <a href="https://github.com/harshit1912003" class="contact-item link-custom"><i class="fab fa-github fa-fw mr-1"></i>harshit1912003</a>
+                    <span class="contact-separator sm:inline">|</span>
+                    <a href="https://x.com/HarshitJos2003" class="contact-item link-custom"><i class="fab fa-twitter fa-fw mr-1"></i>HarshitJos2003</a>
+                    <!-- <span class="contact-separator sm:inline">|</span>
+                    <a href="cv.pdf" target="_blank" class="contact-item link-custom font-semibold"><i class="fas fa-file-pdf fa-fw mr-1"></i>View CV</a> -->
+                </div>
+            </div>
+        </header>
+
+        <!-- Overview Section -->
+        <section id="about" class="mt-2">
+            <h2 class="text-lg font-semibold [font-variant:small-caps] border-b border-black pb-px mb-[1px]">Overview</h2>
+            <p class="text-xs leading-normal mt-[4px]">
+            Mathematics graduate with proven experience in developing end to end AI/ML models and implementing optimization solutions across diverse projects. Eager to leverage this strong analytical foundation for pioneering research in the field of stochastic modeling and optimization.
+            </p>
+            <p class="text-xs mt-1">
+            <a href="cv.pdf" target="_blank" class="link-custom font-semibold inline-flex items-center">
+                <i class="fas fa-file-pdf fa-fw mr-1"></i>View Full CV
+            </a>
+            </p>
+        </section>
+  
+        <!-- Experience Section -->
+        <section id="experience" class="mt-4"> 
+            <h2 class="text-lg font-semibold [font-variant:small-caps] border-b border-black pb-px mb-[1px]">Experience</h2>
+            <div class="mt-[2px]"> 
+                <div class="mb-3"> 
+                    <div class="flex justify-between items-baseline">
+                        <h3 class="font-bold text-sm">Research Internship</h3>
+                        <span class="text-xs italic">Dec, 2024 - Jan, 2025</span>
+                    </div>
+                    <div class="flex justify-between items-baseline text-xs"> 
+                        <span class="italic">Dr. Aparna Mehra, HOD, Mathematics IIT Delhi</span>
+                        <span>New Delhi</span>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="flex justify-between items-baseline">
+                        <h3 class="font-bold text-sm">Machine Learning Intern</h3>
+                        <span class="text-xs italic">May, 2024 - July, 2024</span>
+                    </div>
+                    <div class="flex justify-between items-baseline text-xs">
+                        <span class="italic">Swachh.io</span>
+                        <span>New Delhi</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="mt-4">
+            <h2 class="text-lg font-semibold [font-variant:small-caps] border-b border-black pb-px mb-[1px]">Education</h2>
+            <div class="mt-[2px]">
+                <div class="mb-3">
+                    <div class="flex justify-between items-start"> 
+                        <h3 class="font-bold text-sm">Indian Institute of Technology Delhi</h3>
+                        <div class="text-xs italic text-right"> 
+                           <span>July, 2023 - May, 2025</span>
+                           <span class="cgpa-block">CGPA: 7.8/10</span>
+                        </div>
+                    </div>
+                    <p class="text-xs italic mt-0.5">M.Sc. in Mathematics</p>
+                </div>
+                <div class="mb-3">
+                    <div class="flex justify-between items-start">
+                        <h3 class="font-bold text-sm">Hans Raj College, University of Delhi</h3>
+                        <div class="text-xs italic text-right">
+                            <span>Aug, 2020 - June, 2023</span>
+                            <span class="cgpa-block">CGPA: 8.8/10</span>
+                        </div>
+                    </div>
+                    <p class="text-xs italic mt-0.5">B.Sc. in Mathematics</p>
+                </div>
+                <div class="mb-3">
+                    <div> 
+                        <h3 class="font-bold text-sm">Khaitan Public School</h3>
+                    </div>
+                    <p class="text-xs italic mt-0.5">CBSE: 12th: 95.33%, 10th: 96.20%</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="mt-4">
+            <h2 class="text-lg font-semibold [font-variant:small-caps] border-b border-black pb-px mb-[1px]">Projects</h2>
+            <div class="mt-[2px]">
+                <ul class="list-none pl-0">
+                    <li class="mb-1.5 text-sm">
+                        The King, the Queen, and the all-seeing Fish 
+                        <a href="https://github.com/harshit1912003/ChessEval" class="link-custom text-xs ml-1"><i class="fab fa-github fa-fw"></i> GitHub</a>
+                        <a href="https://mtl782-chessapp.streamlit.app" class="link-custom text-xs ml-1"><i class="fas fa-external-link-alt fa-fw"></i> Live App</a>
+                    </li>
+                    <li class="mb-1.5 text-sm">
+                        Text Guided Image Clustering
+                        <a href="https://github.com/harshit1912003/TGIC" class="link-custom text-xs ml-1"><i class="fab fa-github fa-fw"></i> GitHub</a>
+                    </li>
+                    <li class="mb-1.5 text-sm">
+                        Clustering using ToMATo Algorithm
+                        <a href="https://github.com/harshit1912003/TopoDataAnalysis" class="link-custom text-xs ml-1"><i class="fab fa-github fa-fw"></i> GitHub</a>
+                    </li>
+                    <li class="mb-1.5 text-sm">
+                        Guided Backpropagation Masking
+                        <a href="https://github.com/harshit1912003/GuidedBackpropMasking" class="link-custom text-xs ml-1"><i class="fab fa-github fa-fw"></i> GitHub</a>
+                    </li>
+                    <li class="mb-1.5 text-sm">
+                        Multi-Category Text Classification
+                        <a href="https://github.com/harshit1912003/C-BiLSTM" class="link-custom text-xs ml-1"><i class="fab fa-github fa-fw"></i> GitHub</a>
+                    </li>
+                    <li class="mb-1.5 text-sm">
+                        N-FLP Robust Linear Regression
+                        <a href="https://github.com/harshit1912003/NFLPEstimatorsEcon" class="link-custom text-xs ml-1"><i class="fab fa-github fa-fw"></i> GitHub</a>
+                    </li>
+                    <li class="mb-1.5 text-sm">
+                        FisherFaces and EigenFaces
+                        <a href="https://github.com/harshit1912003/FisherFaces-and-EigenFaces" class="link-custom text-xs ml-1"><i class="fab fa-github fa-fw"></i> GitHub</a>
+                    </li>
+                    <li class="mb-1.5 text-sm">
+                        Stauffer Grimson Background Subtraction
+                        <a href="https://github.com/harshit1912003/SGBS" class="link-custom text-xs ml-1"><i class="fab fa-github fa-fw"></i> GitHub</a>
+                    </li>
+                    <li class="mb-1.5 text-sm">
+                        Axelrod's Tournament
+                        <a href="https://github.com/harshit1912003/AxelrodsTournament" class="link-custom text-xs ml-1"><i class="fab fa-github fa-fw"></i> GitHub</a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Research Outputs Section -->
+        <section id="research" class="mt-4">
+            <h2 class="text-lg font-semibold [font-variant:small-caps] border-b border-black pb-px mb-[1px]">Research Outputs</h2>
+            <div class="mt-[1px]"> 
+                <ul class="list-none pl-0 text-sm">
+                    <li class="mb-1.5">
+                        <span class="font-semibold">[S]</span> Novel DEA Models for Non-Homogeneous DMUs with Negative Data <span class="italic text-xs">(Final draft completed)</span>
+                    </li>
+                    <li class="mb-1.5">
+                        <span class="font-semibold">[T]</span> Non-Convex Data Envelopment Analysis <span class="italic text-xs">(Master's Thesis)</span>
+                        <a href="https://github.com/harshit1912003/DEA" class="link-custom text-xs ml-1"><i class="fab fa-github fa-fw"></i> Code</a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+
+        <!-- <section id="skills" class="mt-4">
+            <h2 class="text-lg font-semibold [font-variant:small-caps] border-b border-black pb-px mb-[1px]">Skills</h2>
+            <div class="text-sm mt-[2px]">
+                <p class="mb-[1.7px]"><span class="font-semibold">Programming Languages:</span> Python, C, C++, R, SQL</p>
+                <p class="mb-[1.7px]"><span class="font-semibold">Tools:</span> OpenCV, PyTorch, TensorFlow, Keras, BeautifulSoup, Selenium, HuggingFace, Gurobi, Git</p>
+                <p class="mb-[1.7px]"><span class="font-semibold">Data Visualization:</span> MatPlotLib, Tableau, ggplot, Excel</p>
+            </div>
+        </section> -->
+
+        <!-- Extra Curricular Activities Section (from Resume) -->
         
-        <div class="right-column">
-            <div class="image-container">
-                <img src="./Image2.webp" alt="image" loading="lazy">
+        <!-- <section id="extracurricular" class="mt-4">
+            <h2 class="text-lg font-semibold [font-variant:small-caps] border-b border-black pb-px mb-[1px]">Extra Curricular Activities</h2>
+            <div class="text-xs mt-[2px] space-y-1 leading-normal">
+                <p><span class="font-semibold">Co-Author:</span> In Search of the Perfect Story (Quill Club Writers, 2018)</p>
+                <p><span class="font-semibold">Volunteer:</span> Mathematics Society, IITD (2023-2024)</p>
+                <p><span class="font-semibold">Certifications:</span> Operations Research (1,2, 3)-NTU, ML in Production, OpenCV Bootcamp, Google Data Analytics</p>
             </div>
-        </div>
+        </section>
+ -->
+        <!-- Relevant Coursework Section (from Resume) -->
+
+        <!-- <section id="coursework" class="mt-4">
+            <h2 class="text-lg font-semibold [font-variant:small-caps] border-b border-black pb-px mb-[1px]">Relevant Coursework</h2>
+            <div class="text-xs mt-[2px] leading-normal"> 
+                MTL505 (Computer Programming), MTL502 (Linear Algebra), MTL508, 32357616 (Mathematical Programming), ELL784 (Introduction to Machine Learning), MTL601 (Probability and Statistics), MTL732, 32357614 (Financial Mathematics), HSL613 (Econometrics), AIL721 (Deep Learning), MTL782 (Data Mining)
+            </div>
+        </section> -->
+
+        <!-- Contact Section (Footer) -->
+        <footer id="contact" class="mt-6 pt-4 border-t border-gray-300 text-center">
+             <h2 class="text-lg font-semibold [font-variant:small-caps] border-b border-black pb-px mb-2">Contact</h2>
+            <div class="text-xs space-y-1">
+                <p>Harshit Joshi</p>
+                <p><span class="link-custom" style="color: inherit; text-decoration: none;">
+                    <i class="fas fa-envelope fa-fw mr-1 text-gray-600"></i>mas237141 [at] iitd [dot] ac [dot] in
+                  </span></p>
+                                  <div class="flex flex-col sm:flex-row sm:flex-wrap justify-center items-center sm:gap-x-2 mt-1">
+                    <a href="https://www.linkedin.com/in/harshitjoshi2003/" class="contact-item link-custom"><i class="fab fa-linkedin fa-fw mr-1"></i>LinkedIn</a>
+                    <span class="contact-separator sm:inline">|</span>
+                    <a href="https://github.com/harshit1912003" class="contact-item link-custom"><i class="fab fa-github fa-fw mr-1"></i>GitHub</a>
+                    <span class="contact-separator sm:inline">|</span>
+                    <a href="https://harshit1912003.github.io/" class="contact-item link-custom"><i class="fas fa-globe fa-fw mr-1"></i>Portfolio</a>
+                </div>
+            </div>
+        </footer>
     </div>
-
-    <div class="connect-block">
-        <p><i>Connect with me:</i></p>
-        <a href="https://linkedin.com/in/harshitjoshi2003" target="_blank">
-            <img src="./linkedin.png" alt="LinkedIn" class="social-icon">
-        </a>
-        <a href="https://github.com/harshit1912003" target="_blank">
-            <img src="./github.png" alt="GitHub" class="social-icon">
-        </a>
-        <a href="https://huggingface.co/HarshitJoshi" target="_blank">
-            <img src="./hflogo.svg" alt="HuggingFace" class="social-icon">
-        </a>
-    </div>
-</div>
-
-<script src="js/script.js" defer></script>
-
+    <script>
+        // No JavaScript is strictly necessary for this layout.
+    </script>
 </body>
 </html>
-

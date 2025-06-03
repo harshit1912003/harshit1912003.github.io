@@ -8,94 +8,189 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome 5 CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <!-- Google Fonts: Lora (similar to Palatino used in resume) -->
+    <!-- Google Fonts: Lora -->
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
     <style>
-        /* Base styles to mimic LaTeX resume's visual feel */
+        /* Base styles */
         body {
             font-family: 'Lora', 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif;
-            font-size: 14px; /* Default text size for the page, Tailwind class 'text-sm' */
-            color: #1f2937; /* Tailwind gray-800, a common dark text color */
+            font-size: 14px;
+            color: #1f2937; /* Tailwind gray-800 */
             background-color: #ffffff; /* White background */
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
-        /* Custom link color matching 'darkblue' from LaTeX (RGB 0,0,139) */
+
+        /* Dark mode styles */
+        html.dark body {
+            background-color: #1f2937; /* Dark background (Tailwind gray-800) */
+            color: #d1d5db; /* Lighter text (Tailwind gray-300) */
+        }
+
+        html.dark .link-custom {
+            color: #93c5fd; /* Lighter blue for links (Tailwind blue-300) */
+        }
+        html.dark .link-custom:hover {
+            text-decoration: underline;
+        }
+
+        html.dark section h2,
+        html.dark footer#contact h2 { /* Target section h2 and footer contact h2 for border */
+            border-bottom-color: #4b5563; /* Tailwind gray-600 for borders */
+        }
+        
+        html.dark footer { /* Footer top border */
+            border-top-color: #4b5563; /* Tailwind gray-600 */
+        }
+
+        /* General icon color in contact items for dark mode */
+        html.dark .contact-item i, 
+        html.dark .contact-item .fa-fw,
+        html.dark header .contact-item .fa-envelope, /* Specifically target header envelope icon */
+        html.dark footer .contact-item .fa-envelope { /* Specifically target footer envelope icon */
+             color: #9ca3af !important; /* Tailwind gray-400 for icons. Use !important to override Tailwind utility if necessary */
+        }
+        
+        /* Ensure icons within links still inherit link color */
+        html.dark .link-custom i.fab, 
+        html.dark .link-custom i.fas.fa-external-link-alt,
+        html.dark .link-custom i.fas.fa-file-pdf {
+            color: inherit !important; /* Make sure it inherits from the dark mode link color */
+        }
+
+        /* Light mode link color */
         .link-custom {
             color: #00008B;
         }
         .link-custom:hover {
             text-decoration: underline;
         }
-        /* Ensure Font Awesome icons inherit the link color for social links, but allow overrides for others */
         .link-custom i.fab, 
         .link-custom i.fas.fa-external-link-alt,
-        .link-custom i.fas.fa-file-pdf { /* Added PDF icon */
+        .link-custom i.fas.fa-file-pdf {
             color: inherit;
         }
-        /* Styling for CGPA part to be on a new line on small screens, inline on larger */
-        .cgpa-block { display: block; } /* Default for mobile */
-        @media (min-width: 640px) { /* sm breakpoint in Tailwind */
+
+        /* Light mode specific for envelope icons if they are not part of a .link-custom */
+        header .contact-item .fa-envelope,
+        footer .contact-item .fa-envelope {
+            color: #4b5563; /* Tailwind gray-600 for light mode, matching the original text-gray-600 */
+        }
+
+
+        .cgpa-block { display: block; } 
+        @media (min-width: 640px) { 
             .cgpa-block { display: inline; margin-left: 0.5rem; }
         }
-        /* Small screen adjustments for contact info separators and item display */
-        @media (max-width: 639px) { /* Below sm breakpoint */
+        @media (max-width: 639px) { 
             .contact-separator { display: none; }
             .contact-item { 
                 display: block; 
                 text-align: center; 
-                width: 100%; /* Ensure items take full width when stacked */
-                margin-bottom: 0.25rem; /* Add some space when stacked */
+                width: 100%; 
+                margin-bottom: 0.25rem; 
             }
-            .contact-item:last-child {
-                margin-bottom: 0;
-            }
+            .contact-item:last-child { margin-bottom: 0; }
         }
+
+        /* Theme Toggle Switch Styles */
+        .theme-switch-wrapper {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+        }
+
+        .theme-switch {
+            display: inline-block;
+            height: 24px;
+            width: 44px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .theme-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 24px;
+            transition: .4s;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            border-radius: 50%;
+            transition: .4s;
+            box-shadow: 0 0 2px rgba(0,0,0,0.3);
+        }
+
+        html:not(.dark) .slider {
+            background-color: #e5e7eb; /* Tailwind gray-200 track */
+        }
+        html:not(.dark) .slider:before {
+             background-color: #1f2937; /* Tailwind gray-800 thumb */
+        }
+
+        html.dark .slider {
+            background-color: #4b5563; /* Tailwind gray-600 track */
+        }
+        html.dark .slider:before {
+            background-color: #e5e7eb; /* Tailwind gray-200 thumb */
+        }
+        
+        input:checked + .slider:before {
+            transform: translateX(20px);
+        }
+
+        .main-container-padded {
+            padding-top: 30px;
+        }
+
     </style>
 </head>
 <body class="text-sm">
 
-    <!-- Main container mimicking LaTeX page geometry and content width -->
-    <div class="max-w-[695px] mx-auto pt-[30px] pb-[38px] px-4 sm:px-[45px] md:px-[53px]"> <!-- Responsive padding -->
+    <div class="theme-switch-wrapper">
+        <label class="theme-switch" for="theme-checkbox">
+            <input type="checkbox" id="theme-checkbox" />
+            <span class="slider"></span>
+        </label>
+    </div>
 
-        <!-- Header: Profile Image, Name, and Contact Information -->
+    <!-- Main container -->
+    <div class="max-w-[695px] mx-auto pb-[38px] px-4 sm:px-[45px] md:px-[53px] main-container-padded">
+
+        <!-- Header -->
         <header class="text-center mb-6">
-            
             <div class="flex justify-center mb-3">
-                <!-- <img id="profileImage" src="/Users/harshit/harshit1912003.github.io/Image2.webp" alt="Profile Picture" class="rounded-full w-24 h-24 object-cover border-2 border-gray-300"> -->
-                <!-- 
-                    INSTRUCTIONS TO REPLACE THIS PLACEHOLDER IMAGE:
-                    1. Prepare your image:
-                       - Recommended dimensions: Square, e.g., 100x100 pixels or 150x150 pixels.
-                       - Recommended file format: JPG (for photographs) or PNG (if you need transparency or for crisp logos/graphics).
-                       - Save the image in the same folder as this HTML file, or a subfolder (e.g., 'images/profile.jpg').
-                    2. Update the HTML:
-                       - Find this `<img>` tag with `id="profileImage"`.
-                       - Change the `src` attribute from "https://via.placeholder.com/100/..." to the path of your image.
-                         For example, if your image is named 'profile.jpg' and is in the same folder:
-                         src="profile.jpg"
-                         If it's in an 'images' subfolder:
-                         src="images/profile.jpg"
-                -->
+                <!-- Profile Image Placeholder -->
             </div>
-
             <h1 class="text-[2.25rem] font-bold mb-2">Harshit Joshi</h1>
-            
             <div class="text-xs space-y-1">
-                <!-- Line 1: Email, Portfolio -->
                 <div class="flex flex-col sm:flex-row sm:flex-wrap justify-center items-center sm:gap-x-2">
-                    <span class="contact-item"><i class="fas fa-envelope fa-fw mr-1 text-gray-600"></i>mas237141 [at] iitd [dot] ac [dot] in</span>
-                    <!-- <span class="contact-separator sm:inline">|</span>
-                    <a href="https://harshit1912003.github.io/" class="contact-item link-custom"><i class="fas fa-globe fa-fw mr-1"></i>harshit1912003.github.io</a> -->
+                    <!-- Removed text-gray-600 from here, will be handled by CSS -->
+                    <span class="contact-item"><i class="fas fa-envelope fa-fw mr-1"></i>mas237141 [at] iitd [dot] ac [dot] in</span>
                 </div>
-
-                <!-- Line 2: Social Media Links & CV Link -->
                 <div class="flex flex-col sm:flex-row sm:flex-wrap justify-center items-center sm:gap-x-2 mt-1 sm:mt-0">
                     <a href="https://www.linkedin.com/in/harshitjoshi2003/" class="contact-item link-custom"><i class="fab fa-linkedin fa-fw mr-1"></i>Harshit</a>
                     <span class="contact-separator sm:inline">|</span>
                     <a href="https://github.com/harshit1912003" class="contact-item link-custom"><i class="fab fa-github fa-fw mr-1"></i>harshit1912003</a>
                     <span class="contact-separator sm:inline">|</span>
                     <a href="https://x.com/HarshitJos2003" class="contact-item link-custom"><i class="fab fa-twitter fa-fw mr-1"></i>HarshitJos2003</a>
-                    <!-- <span class="contact-separator sm:inline">|</span>
-                    <a href="cv.pdf" target="_blank" class="contact-item link-custom font-semibold"><i class="fas fa-file-pdf fa-fw mr-1"></i>View CV</a> -->
                 </div>
             </div>
         </header>
@@ -186,11 +281,11 @@
                         <a href="https://github.com/harshit1912003/ChessEval" class="link-custom text-xs ml-1"><i class="fab fa-github fa-fw"></i> GitHub</a>
                         <a href="https://mtl782-chessapp.streamlit.app" class="link-custom text-xs ml-1"><i class="fas fa-external-link-alt fa-fw"></i> Live App</a>
                     </li>
-                    <li class="mb-1.5 text-sm">
+                     <li class="mb-1.5 text-sm">
                         Text Guided Image Clustering
                         <a href="https://github.com/harshit1912003/TGIC" class="link-custom text-xs ml-1"><i class="fab fa-github fa-fw"></i> GitHub</a>
                     </li>
-                    <li class="mb-1.5 text-sm">
+                     <li class="mb-1.5 text-sm">
                         Clustering using ToMATo Algorithm
                         <a href="https://github.com/harshit1912003/TopoDataAnalysis" class="link-custom text-xs ml-1"><i class="fab fa-github fa-fw"></i> GitHub</a>
                     </li>
@@ -238,46 +333,22 @@
             </div>
         </section>
 
-        <!-- Skills Section -->
-
-        <!-- <section id="skills" class="mt-4">
-            <h2 class="text-lg font-semibold [font-variant:small-caps] border-b border-black pb-px mb-[1px]">Skills</h2>
-            <div class="text-sm mt-[2px]">
-                <p class="mb-[1.7px]"><span class="font-semibold">Programming Languages:</span> Python, C, C++, R, SQL</p>
-                <p class="mb-[1.7px]"><span class="font-semibold">Tools:</span> OpenCV, PyTorch, TensorFlow, Keras, BeautifulSoup, Selenium, HuggingFace, Gurobi, Git</p>
-                <p class="mb-[1.7px]"><span class="font-semibold">Data Visualization:</span> MatPlotLib, Tableau, ggplot, Excel</p>
-            </div>
-        </section> -->
-
-        <!-- Extra Curricular Activities Section (from Resume) -->
-        
-        <!-- <section id="extracurricular" class="mt-4">
-            <h2 class="text-lg font-semibold [font-variant:small-caps] border-b border-black pb-px mb-[1px]">Extra Curricular Activities</h2>
-            <div class="text-xs mt-[2px] space-y-1 leading-normal">
-                <p><span class="font-semibold">Co-Author:</span> In Search of the Perfect Story (Quill Club Writers, 2018)</p>
-                <p><span class="font-semibold">Volunteer:</span> Mathematics Society, IITD (2023-2024)</p>
-                <p><span class="font-semibold">Certifications:</span> Operations Research (1,2, 3)-NTU, ML in Production, OpenCV Bootcamp, Google Data Analytics</p>
-            </div>
-        </section>
- -->
-        <!-- Relevant Coursework Section (from Resume) -->
-
-        <!-- <section id="coursework" class="mt-4">
-            <h2 class="text-lg font-semibold [font-variant:small-caps] border-b border-black pb-px mb-[1px]">Relevant Coursework</h2>
-            <div class="text-xs mt-[2px] leading-normal"> 
-                MTL505 (Computer Programming), MTL502 (Linear Algebra), MTL508, 32357616 (Mathematical Programming), ELL784 (Introduction to Machine Learning), MTL601 (Probability and Statistics), MTL732, 32357614 (Financial Mathematics), HSL613 (Econometrics), AIL721 (Deep Learning), MTL782 (Data Mining)
-            </div>
-        </section> -->
-
         <!-- Contact Section (Footer) -->
         <footer id="contact" class="mt-6 pt-4 border-t border-gray-300 text-center">
-             <h2 class="text-lg font-semibold [font-variant:small-caps] border-b border-black pb-px mb-2">Contact</h2>
+             <!-- Removed border-black from here, will be handled by CSS -->
+             <h2 class="text-lg font-semibold [font-variant:small-caps] border-b pb-px mb-2">Contact</h2>
             <div class="text-xs space-y-1">
                 <p>Harshit Joshi</p>
-                <p><span class="link-custom" style="color: inherit; text-decoration: none;">
-                    <i class="fas fa-envelope fa-fw mr-1 text-gray-600"></i>mas237141 [at] iitd [dot] ac [dot] in
-                  </span></p>
-                                  <div class="flex flex-col sm:flex-row sm:flex-wrap justify-center items-center sm:gap-x-2 mt-1">
+                <!-- The span below for the email was a normal span, not a link. 
+                     It had an inline style "color: inherit; text-decoration: none;" and an <i> tag with text-gray-600.
+                     We need to ensure the icon in this specific span also changes color.
+                -->
+                <p>
+                  <span class="contact-item" style="text-decoration: none;"> <!-- Made this a contact item for consistency in styling -->
+                    <i class="fas fa-envelope fa-fw mr-1"></i>mas237141 [at] iitd [dot] ac [dot] in
+                  </span>
+                </p>
+                <div class="flex flex-col sm:flex-row sm:flex-wrap justify-center items-center sm:gap-x-2 mt-1">
                     <a href="https://www.linkedin.com/in/harshitjoshi2003/" class="contact-item link-custom"><i class="fab fa-linkedin fa-fw mr-1"></i>LinkedIn</a>
                     <span class="contact-separator sm:inline">|</span>
                     <a href="https://github.com/harshit1912003" class="contact-item link-custom"><i class="fab fa-github fa-fw mr-1"></i>GitHub</a>
@@ -288,7 +359,35 @@
         </footer>
     </div>
     <script>
-        // No JavaScript is strictly necessary for this layout.
+        const themeCheckbox = document.getElementById('theme-checkbox');
+        const htmlElement = document.documentElement;
+
+        function applyTheme(theme) {
+            if (theme === 'dark') {
+                htmlElement.classList.add('dark');
+                themeCheckbox.checked = true;
+            } else {
+                htmlElement.classList.remove('dark');
+                themeCheckbox.checked = false;
+            }
+        }
+
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            applyTheme(savedTheme);
+        } else {
+            applyTheme('light'); 
+        }
+        
+        themeCheckbox.addEventListener('change', () => {
+            if (themeCheckbox.checked) {
+                applyTheme('dark');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                applyTheme('light');
+                localStorage.setItem('theme', 'light');
+            }
+        });
     </script>
 </body>
 </html>

@@ -90,6 +90,14 @@
                 margin-bottom: 0.25rem; 
             }
             .contact-item:last-child { margin-bottom: 0; }
+            
+            /* Make the two-column layout stack on mobile */
+            .two-column-layout {
+                flex-direction: column;
+            }
+            .left-column, .right-column {
+                width: 100%;
+            }
         }
 
         /* Theme Toggle Switch Styles */
@@ -159,7 +167,37 @@
         .main-container-padded {
             padding-top: 30px;
         }
-
+        
+        /* Two-column layout styles */
+        .two-column-layout {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px; /* Increased from 20px to create more space between columns */
+        }
+        
+        .left-column {
+            flex: 1;
+            min-width: 250px;
+            max-width: 40%; /* Added max-width to prevent left column from taking too much space */
+        }
+        
+        .right-column {
+            flex: 1.5;
+            min-width: 300px;
+        }
+        
+        /* Make the footer full width and centered */
+        .footer-container {
+            width: 100%;
+            clear: both;
+        }
+        
+        /* Main container width increased */
+        .main-container-padded {
+            max-width: 1000px; /* Increased from 900px */
+            margin: 0 auto;
+            padding-top: 30px;
+        }
     </style>
 </head>
 <body class="text-sm">
@@ -172,198 +210,205 @@
     </div>
 
     <!-- Main container -->
-    <div class="max-w-[695px] mx-auto pb-[38px] px-4 sm:px-[45px] md:px-[53px] main-container-padded">
+    <div class="max-w-[1000px] mx-auto pb-[38px] px-2 sm:px-[25px] md:px-[30px] main-container-padded">
 
-        <!-- Header -->
-        <header class="text-center mb-6">
-            <div class="flex justify-center mb-3">
-                <!-- Profile Image Placeholder -->
-            </div>
-            <h1 class="text-[2.25rem] font-bold mb-2">Harshit Joshi</h1>
-            <div class="text-xs space-y-1">
-                <div class="flex flex-col sm:flex-row sm:flex-wrap justify-center items-center sm:gap-x-2">
-                    <!-- Removed text-gray-600 from here, will be handled by CSS -->
-                    <span class="contact-item"><i class="fas fa-envelope fa-fw mr-1"></i>harshith.j.2003 [at] gmail [dot] ac [dot] in</span>
-                </div>
-                <div class="flex flex-col sm:flex-row sm:flex-wrap justify-center items-center sm:gap-x-2 mt-1 sm:mt-0">
-                    <a href="https://www.linkedin.com/in/harshitjoshi2003/" class="contact-item link-custom"><i class="fab fa-linkedin fa-fw mr-1"></i>Harshit</a>
-                    <span class="contact-separator sm:inline">|</span>
-                    <a href="https://github.com/harshit1912003" class="contact-item link-custom"><i class="fab fa-github fa-fw mr-1"></i>harshit1912003</a>
-                    <span class="contact-separator sm:inline">|</span>
-                    <a href="https://x.com/HarshitJos2003" class="contact-item link-custom"><i class="fab fa-twitter fa-fw mr-1"></i>HarshitJos2003</a>
-                </div>
-            </div>
-        </header>
+        <!-- Two-column layout -->
+        <div class="two-column-layout">
+            <!-- Left column - Header and personal info -->
+            <div class="left-column">
+                <!-- Header -->
+                <header class="mb-6">
+                    <div class="flex justify-center mb-3">
+                        <!-- Profile Image Placeholder -->
+                    </div>
+                    <h1 class="text-[2.25rem] font-bold mb-2">Harshit Joshi</h1>
+                    <div class="text-xs space-y-1">
+                        <div class="flex flex-col sm:flex-row sm:flex-wrap items-center sm:gap-x-2">
+                            <span class="contact-item"><i class="fas fa-envelope fa-fw mr-1"></i>harshith.j.2003 [at] gmail [dot] ac [dot] in</span>
+                        </div>
+                        <div class="flex flex-col sm:flex-row sm:flex-wrap items-center sm:gap-x-2 mt-1 sm:mt-0">
+                            <a href="https://www.linkedin.com/in/harshitjoshi2003/" class="contact-item link-custom"><i class="fab fa-linkedin fa-fw mr-1"></i>Harshit</a>
+                            <span class="contact-separator sm:inline">|</span>
+                            <a href="https://github.com/harshit1912003" class="contact-item link-custom"><i class="fab fa-github fa-fw mr-1"></i>harshit1912003</a>
+                            <span class="contact-separator sm:inline">|</span>
+                            <a href="https://x.com/HarshitJos2003" class="contact-item link-custom"><i class="fab fa-twitter fa-fw mr-1"></i>HarshitJos2003</a>
+                        </div>
+                    </div>
+                </header>
 
-        <!-- Update Message -->
-        <div class="mb-6 mx-auto max-w-[600px] border border-gray-300 p-3 rounded">
-            <h3 class="text-lg font-semibold mb-2 text-center">-+- Update -+-</h3>
-            <p class="text-xs leading-normal">
-            I'm done with the SnP500 Diversification project (FOR NOW), it outperforms HRP by a wide margin (1.15 Vs 0.91 Sharpe) and is better diversified <a href="https://github.com/harshit1912003/SnP500Diversification" class="link-custom text-xs ml-1"><i class="fab fa-github fa-fw"></i></a>
-                <br>
-                <strong>Whats Next?</strong>: A better covarience matrix estimation using DEEP strategies for a much better dendogram, We worked with a Graph CNN + LSTM Architecture with a lead-lag dataset, (to harness the Adjacent matrix) it works surprisingly well, however there's still some issues n all with null rows coming up and diagonal entries being smaller than 1, will fix it when I get time 
-            </p>
+                <!-- Update Message -->
+                <div class="mb-6 border border-gray-300 p-3 rounded">
+                    <h3 class="text-lg font-semibold mb-2 text-center">-+- Update -+-</h3>
+                    <p class="text-xs leading-normal">
+                    I'm done with the SnP500 Diversification project (FOR NOW), it outperforms HRP by a wide margin (1.15 Vs 0.91 Sharpe) and is better diversified <a href="https://github.com/harshit1912003/SnP500Diversification" class="link-custom text-xs ml-1"><i class="fab fa-github fa-fw"></i></a>
+                        <br>
+                        <strong>Whats Next?</strong>: A better covarience matrix estimation using DEEP strategies for a much better dendogram, We worked with a Graph CNN + LSTM Architecture with a lead-lag dataset, (to harness the Adjacent matrix) it works surprisingly well, however there's still some issues n all with null rows coming up and diagonal entries being smaller than 1, will fix it when I get time 
+                    </p>
+                </div>
+
+                <!-- Overview Section -->
+                <div>
+                    <div class="flex justify-between items-center w-full">
+                        <h2 class="text-lg font-semibold [font-variant:small-caps] border-b border-black pb-px mb-[1px] flex-grow">Overview</h2>
+                        <a href="Full CV.pdf" target="_blank" class="link-custom font-semibold inline-flex items-center text-xs">
+                            <i class="fas fa-file-pdf fa-fw mr-1"></i>FullCV
+                        </a>
+                    </div>
+                    <p class="text-xs leading-normal mt-[4px]">
+                        I recently finished my MSc Math from IIT Delhi. While there, I got deep into Data Science and Deep Learning, also explored a bit in Topological Data Analysis through a mix of coursework and projects. Around mid-2024 is when I started getting really into in Economics, Game Theory, and especially Optimization.
+                        <br> After graduating, Ive been studying Portfolio Optimization and Optimal Decisions under Stochasticity. I tested a bunch of deep ML strategies to rebalance the S&P 500 with a focus on minimizing idiosyncratic risk.
+                        <br> As of now, I'm actively looking for Data Science roles. I'm comfortable working with data at scale, write solid SQL, and have hands-on experience building ETL pipelines (mainly on Azure). Open (infact, would prefer) to relocate.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Right column - Experience, Education, Projects, Research -->
+            <div class="right-column">
+                <!-- Experience Section -->
+                <section id="experience" class="mb-4"> 
+                    <h2 class="text-lg font-semibold [font-variant:small-caps] border-b border-black pb-px mb-[1px]">Experience</h2>
+                    <div class="mt-[2px]"> 
+                        <div class="mb-3"> 
+                            <div class="flex justify-between items-baseline">
+                                <h3 class="font-bold text-sm">Research Internship</h3>
+                                <span class="text-xs italic">Dec, 2024 - Jan, 2025</span>
+                            </div>
+                            <div class="flex justify-between items-baseline text-xs"> 
+                                <span class="italic">Dr. Aparna Mehra, HOD, Mathematics IIT Delhi</span>
+                                <span>New Delhi</span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="flex justify-between items-baseline">
+                                <h3 class="font-bold text-sm">Machine Learning Intern</h3>
+                                <span class="text-xs italic">May, 2024 - July, 2024</span>
+                            </div>
+                            <div class="flex justify-between items-baseline text-xs">
+                                <span class="italic">Swachh.io</span>
+                                <span>New Delhi</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Education Section -->
+                <section id="education" class="mb-4">
+                    <h2 class="text-lg font-semibold [font-variant:small-caps] border-b border-black pb-px mb-[1px]">Education</h2>
+                    <div class="mt-[2px]">
+                        <div class="mb-3">
+                            <div class="flex justify-between items-start"> 
+                                <h3 class="font-bold text-sm">Indian Institute of Technology Delhi</h3>
+                                <div class="text-xs italic text-right"> 
+                                   <span>July, 2023 - May, 2025</span>
+                                   <span class="cgpa-block">CGPA: 7.8/10</span>
+                                </div>
+                            </div>
+                            <p class="text-xs italic mt-0.5">M.Sc. in Mathematics</p>
+                        </div>
+                        <div class="mb-3">
+                            <div class="flex justify-between items-start">
+                                <h3 class="font-bold text-sm">Hans Raj College, University of Delhi</h3>
+                                <div class="text-xs italic text-right">
+                                    <span>Aug, 2020 - June, 2023</span>
+                                    <span class="cgpa-block">CGPA: 8.8/10</span>
+                                </div>
+                            </div>
+                            <p class="text-xs italic mt-0.5">B.Sc. in Mathematics</p>
+                        </div>
+                        <div class="mb-3">
+                            <div> 
+                                <h3 class="font-bold text-sm">Khaitan Public School</h3>
+                            </div>
+                            <p class="text-xs italic mt-0.5">CBSE: 12th: 95.33%, 10th: 96.20%</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Projects Section -->
+                <section id="projects" class="mb-4">
+                    <h2 class="text-lg font-semibold [font-variant:small-caps] border-b border-black pb-px mb-[1px]">Projects</h2>
+                    <div class="mt-[2px]">
+                        <ul class="list-none pl-0">
+                            <li class="mb-1.5 text-sm">
+                                The King, the Queen, and the all-seeing Fish 
+                                <a href="https://github.com/harshit1912003/ChessEval" class="link-custom text-xs ml-1"><i class="fab fa-github fa-fw"></i> GitHub</a>
+                                <a href="https://mtl782-chessapp.streamlit.app" class="link-custom text-xs ml-1"><i class="fas fa-external-link-alt fa-fw"></i> Live App</a>
+                            </li>
+                             <li class="mb-1.5 text-sm">
+                                Text Guided Image Clustering
+                                <a href="https://github.com/harshit1912003/TGIC" class="link-custom text-xs ml-1"><i class="fab fa-github fa-fw"></i> GitHub</a>
+                            </li>
+                             <li class="mb-1.5 text-sm">
+                                Clustering using ToMATo Algorithm
+                                <a href="https://github.com/harshit1912003/TopoDataAnalysis" class="link-custom text-xs ml-1"><i class="fab fa-github fa-fw"></i> GitHub</a>
+                            </li>
+                            <li class="mb-1.5 text-sm">
+                                Guided Backpropagation Masking
+                                <a href="https://github.com/harshit1912003/GuidedBackpropMasking" class="link-custom text-xs ml-1"><i class="fab fa-github fa-fw"></i> GitHub</a>
+                            </li>
+                            <li class="mb-1.5 text-sm">
+                                Multi-Category Text Classification
+                                <a href="https://github.com/harshit1912003/C-BiLSTM" class="link-custom text-xs ml-1"><i class="fab fa-github fa-fw"></i> GitHub</a>
+                            </li>
+                            <li class="mb-1.5 text-sm">
+                                N-FLP Robust Linear Regression
+                                <a href="https://github.com/harshit1912003/NFLPEstimatorsEcon" class="link-custom text-xs ml-1"><i class="fab fa-github fa-fw"></i> GitHub</a>
+                            </li>
+                            <li class="mb-1.5 text-sm">
+                                FisherFaces and EigenFaces
+                                <a href="https://github.com/harshit1912003/FisherFaces-and-EigenFaces" class="link-custom text-xs ml-1"><i class="fab fa-github fa-fw"></i> GitHub</a>
+                            </li>
+                            <li class="mb-1.5 text-sm">
+                                Stauffer Grimson Background Subtraction
+                                <a href="https://github.com/harshit1912003/SGBS" class="link-custom text-xs ml-1"><i class="fab fa-github fa-fw"></i> GitHub</a>
+                            </li>
+                            <li class="mb-1.5 text-sm">
+                                Axelrod's Tournament
+                                <a href="https://github.com/harshit1912003/AxelrodsTournament" class="link-custom text-xs ml-1"><i class="fab fa-github fa-fw"></i> GitHub</a>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Research Outputs Section -->
+                <section id="research">
+                    <h2 class="text-lg font-semibold [font-variant:small-caps] border-b border-black pb-px mb-[1px]">Research Outputs</h2>
+                    <div class="mt-[1px]"> 
+                        <ul class="list-none pl-0 text-sm">
+                            <li class="mb-1.5">
+                                <span class="font-semibold">[S]</span> Novel DEA Models for Non-Homogeneous DMUs with Negative Data <span class="italic text-xs">(Submitted to EJOR) </span> &#128512;
+                            </li>
+                            <li class="mb-1.5">
+                                <span class="font-semibold">[T]</span> Non-Convex Data Envelopment Analysis <span class="italic text-xs">(Won Best MSc thesis across departments)</span>
+                                <a href="https://github.com/harshit1912003/DEA" class="link-custom text-xs ml-1"><i class="fab fa-github fa-fw"></i> </a>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
         </div>
 
-        <!-- Overview Section -->
-            <div class="flex justify-between items-center w-full">
-                <h2 class="text-lg font-semibold [font-variant:small-caps] border-b border-black pb-px mb-[1px] flex-grow">Overview</h2>
-                <a href="Full CV.pdf" target="_blank" class="link-custom font-semibold inline-flex items-center text-xs">
-                    <i class="fas fa-file-pdf fa-fw mr-1"></i>FullCV
-                </a>
-            </div>
-            <p class="text-xs leading-normal mt-[4px]">
-                I recently finished my MSc Math from IIT Delhi. While there, I got deep into Data Science and Deep Learning, also explored a bit in Topological Data Analysis through a mix of coursework and projects. Around mid-2024 is when I started getting really into in Economics, Game Theory, and especially Optimization.
-                <br> After graduating, I sorta took about a month off to study Portfolio Optimization. I tested a bunch of deep strategies to rebalance the S&P 500 with a focus on minimizing idiosyncratic risk.
-                <br> As of now, I'm actively looking for Data Science roles. I'm comfortable working with data at scale, write solid SQL, and have hands-on experience building ETL pipelines (mainly on Azure). Open (infact, would prefer) to relocate.
-            </p>
-        </section>
-        <!-- Experience Section -->
-        <section id="experience" class="mt-4"> 
-            <h2 class="text-lg font-semibold [font-variant:small-caps] border-b border-black pb-px mb-[1px]">Experience</h2>
-            <div class="mt-[2px]"> 
-                <div class="mb-3"> 
-                    <div class="flex justify-between items-baseline">
-                        <h3 class="font-bold text-sm">Research Internship</h3>
-                        <span class="text-xs italic">Dec, 2024 - Jan, 2025</span>
-                    </div>
-                    <div class="flex justify-between items-baseline text-xs"> 
-                        <span class="italic">Dr. Aparna Mehra, HOD, Mathematics IIT Delhi</span>
-                        <span>New Delhi</span>
+        <!-- Contact Section (Footer) - Full width and centered -->
+        <div class="footer-container">
+            <footer id="contact" class="mt-6 pt-4 border-t border-gray-300 text-center">
+                 <h2 class="text-lg font-semibold [font-variant:small-caps] border-b pb-px mb-2">Contact</h2>
+                <div class="text-xs space-y-1">
+                    <p>Harshit Joshi</p>
+                    <p>
+                      <span class="contact-item" style="text-decoration: none;">
+                        <i class="fas fa-envelope fa-fw mr-1"></i>harshith.j.2003 [at] gmail [dot] ac [dot] in
+                      </span>
+                    </p>
+                    <div class="flex flex-col sm:flex-row sm:flex-wrap justify-center items-center sm:gap-x-2 mt-1">
+                        <a href="https://www.linkedin.com/in/harshitjoshi2003/" class="contact-item link-custom"><i class="fab fa-linkedin fa-fw mr-1"></i>LinkedIn</a>
+                        <span class="contact-separator sm:inline">|</span>
+                        <a href="https://github.com/harshit1912003" class="contact-item link-custom"><i class="fab fa-github fa-fw mr-1"></i>GitHub</a>
+                        <span class="contact-separator sm:inline">|</span>
+                        <a href="https://harshit1912003.github.io/" class="contact-item link-custom"><i class="fas fa-globe fa-fw mr-1"></i>Portfolio</a>
                     </div>
                 </div>
-                <div class="mb-3">
-                    <div class="flex justify-between items-baseline">
-                        <h3 class="font-bold text-sm">Machine Learning Intern</h3>
-                        <span class="text-xs italic">May, 2024 - July, 2024</span>
-                    </div>
-                    <div class="flex justify-between items-baseline text-xs">
-                        <span class="italic">Swachh.io</span>
-                        <span>New Delhi</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Education Section -->
-        <section id="education" class="mt-4">
-            <h2 class="text-lg font-semibold [font-variant:small-caps] border-b border-black pb-px mb-[1px]">Education</h2>
-            <div class="mt-[2px]">
-                <div class="mb-3">
-                    <div class="flex justify-between items-start"> 
-                        <h3 class="font-bold text-sm">Indian Institute of Technology Delhi</h3>
-                        <div class="text-xs italic text-right"> 
-                           <span>July, 2023 - May, 2025</span>
-                           <span class="cgpa-block">CGPA: 7.8/10</span>
-                        </div>
-                    </div>
-                    <p class="text-xs italic mt-0.5">M.Sc. in Mathematics</p>
-                </div>
-                <div class="mb-3">
-                    <div class="flex justify-between items-start">
-                        <h3 class="font-bold text-sm">Hans Raj College, University of Delhi</h3>
-                        <div class="text-xs italic text-right">
-                            <span>Aug, 2020 - June, 2023</span>
-                            <span class="cgpa-block">CGPA: 8.8/10</span>
-                        </div>
-                    </div>
-                    <p class="text-xs italic mt-0.5">B.Sc. in Mathematics</p>
-                </div>
-                <div class="mb-3">
-                    <div> 
-                        <h3 class="font-bold text-sm">Khaitan Public School</h3>
-                    </div>
-                    <p class="text-xs italic mt-0.5">CBSE: 12th: 95.33%, 10th: 96.20%</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects" class="mt-4">
-            <h2 class="text-lg font-semibold [font-variant:small-caps] border-b border-black pb-px mb-[1px]">Projects</h2>
-            <div class="mt-[2px]">
-                <ul class="list-none pl-0">
-                    <li class="mb-1.5 text-sm">
-                        The King, the Queen, and the all-seeing Fish 
-                        <a href="https://github.com/harshit1912003/ChessEval" class="link-custom text-xs ml-1"><i class="fab fa-github fa-fw"></i> GitHub</a>
-                        <a href="https://mtl782-chessapp.streamlit.app" class="link-custom text-xs ml-1"><i class="fas fa-external-link-alt fa-fw"></i> Live App</a>
-                    </li>
-                     <li class="mb-1.5 text-sm">
-                        Text Guided Image Clustering
-                        <a href="https://github.com/harshit1912003/TGIC" class="link-custom text-xs ml-1"><i class="fab fa-github fa-fw"></i> GitHub</a>
-                    </li>
-                     <li class="mb-1.5 text-sm">
-                        Clustering using ToMATo Algorithm
-                        <a href="https://github.com/harshit1912003/TopoDataAnalysis" class="link-custom text-xs ml-1"><i class="fab fa-github fa-fw"></i> GitHub</a>
-                    </li>
-                    <li class="mb-1.5 text-sm">
-                        Guided Backpropagation Masking
-                        <a href="https://github.com/harshit1912003/GuidedBackpropMasking" class="link-custom text-xs ml-1"><i class="fab fa-github fa-fw"></i> GitHub</a>
-                    </li>
-                    <li class="mb-1.5 text-sm">
-                        Multi-Category Text Classification
-                        <a href="https://github.com/harshit1912003/C-BiLSTM" class="link-custom text-xs ml-1"><i class="fab fa-github fa-fw"></i> GitHub</a>
-                    </li>
-                    <li class="mb-1.5 text-sm">
-                        N-FLP Robust Linear Regression
-                        <a href="https://github.com/harshit1912003/NFLPEstimatorsEcon" class="link-custom text-xs ml-1"><i class="fab fa-github fa-fw"></i> GitHub</a>
-                    </li>
-                    <li class="mb-1.5 text-sm">
-                        FisherFaces and EigenFaces
-                        <a href="https://github.com/harshit1912003/FisherFaces-and-EigenFaces" class="link-custom text-xs ml-1"><i class="fab fa-github fa-fw"></i> GitHub</a>
-                    </li>
-                    <li class="mb-1.5 text-sm">
-                        Stauffer Grimson Background Subtraction
-                        <a href="https://github.com/harshit1912003/SGBS" class="link-custom text-xs ml-1"><i class="fab fa-github fa-fw"></i> GitHub</a>
-                    </li>
-                    <li class="mb-1.5 text-sm">
-                        Axelrod's Tournament
-                        <a href="https://github.com/harshit1912003/AxelrodsTournament" class="link-custom text-xs ml-1"><i class="fab fa-github fa-fw"></i> GitHub</a>
-                    </li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- Research Outputs Section -->
-        <section id="research" class="mt-4">
-            <h2 class="text-lg font-semibold [font-variant:small-caps] border-b border-black pb-px mb-[1px]">Research Outputs</h2>
-            <div class="mt-[1px]"> 
-                <ul class="list-none pl-0 text-sm">
-                    <li class="mb-1.5">
-                        <span class="font-semibold">[S]</span> Novel DEA Models for Non-Homogeneous DMUs with Negative Data <span class="italic text-xs">(Submitted to EJOR) </span> &#128512;
-                    </li>
-                    <li class="mb-1.5">
-                        <span class="font-semibold">[T]</span> Non-Convex Data Envelopment Analysis <span class="italic text-xs">(Master's Thesis)</span>
-                        <a href="https://github.com/harshit1912003/DEA" class="link-custom text-xs ml-1"><i class="fab fa-github fa-fw"></i> Code</a>
-                    </li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- Contact Section (Footer) -->
-        <footer id="contact" class="mt-6 pt-4 border-t border-gray-300 text-center">
-             <!-- Removed border-black from here, will be handled by CSS -->
-             <h2 class="text-lg font-semibold [font-variant:small-caps] border-b pb-px mb-2">Contact</h2>
-            <div class="text-xs space-y-1">
-                <p>Harshit Joshi</p>
-                <!-- The span below for the email was a normal span, not a link. 
-                     It had an inline style "color: inherit; text-decoration: none;" and an <i> tag with text-gray-600.
-                     We need to ensure the icon in this specific span also changes color.
-                -->
-                <p>
-                  <span class="contact-item" style="text-decoration: none;"> <!-- Made this a contact item for consistency in styling -->
-                    <i class="fas fa-envelope fa-fw mr-1"></i>harshith.j.2003 [at] gmail [dot] ac [dot] in
-                  </span>
-                </p>
-                <div class="flex flex-col sm:flex-row sm:flex-wrap justify-center items-center sm:gap-x-2 mt-1">
-                    <a href="https://www.linkedin.com/in/harshitjoshi2003/" class="contact-item link-custom"><i class="fab fa-linkedin fa-fw mr-1"></i>LinkedIn</a>
-                    <span class="contact-separator sm:inline">|</span>
-                    <a href="https://github.com/harshit1912003" class="contact-item link-custom"><i class="fab fa-github fa-fw mr-1"></i>GitHub</a>
-                    <span class="contact-separator sm:inline">|</span>
-                    <a href="https://harshit1912003.github.io/" class="contact-item link-custom"><i class="fas fa-globe fa-fw mr-1"></i>Portfolio</a>
-                </div>
-            </div>
-        </footer>
+            </footer>
+        </div>
     </div>
     <script>
         const themeCheckbox = document.getElementById('theme-checkbox');

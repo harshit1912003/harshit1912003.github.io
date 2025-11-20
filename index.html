@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,97 +10,179 @@
     <!-- Font Awesome 5 CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <!-- Google Fonts: Lora -->
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
     <style>
         /* Base styles */
         body {
-            font-family: 'Lora', 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif;
-            font-size: 14px;
-            color: #1f2937; /* Tailwind gray-800 */
-            background-color: #ffffff; /* White background */
+            font-family: 'Lora', serif;
+            font-size: 15px;
+            /* Slightly larger for better readability */
+            color: #333;
+            background-color: #f0f0f0;
+            /* Dotted background pattern */
+            background-image: radial-gradient(#d1d5db 1px, transparent 1px);
+            background-size: 20px 20px;
             transition: background-color 0.3s ease, color 0.3s ease;
+            line-height: 1.6;
+        }
+
+        /* Paper Container */
+        .paper-container {
+            background-color: #fff;
+            max-width: 800px;
+            /* Slightly wider for a better paper feel */
+            margin: 40px auto;
+            padding: 60px 80px;
+            /* Generous padding */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05), 0 1px 4px rgba(0, 0, 0, 0.1);
+            /* Soft, elegant shadow */
+            position: relative;
+        }
+
+        /* Mobile adjustments for paper */
+        @media (max-width: 640px) {
+            .paper-container {
+                margin: 0;
+                padding: 30px 20px;
+                box-shadow: none;
+                /* Full width on mobile usually looks better without floating shadow */
+                width: 100%;
+            }
+
+            body {
+                background-image: none;
+                /* Remove dots on mobile for cleaner look, or keep if preferred */
+                background-color: #fff;
+            }
+        }
+
+        /* Typography Refinements */
+        h1 {
+            font-weight: 600;
+            color: #111;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-weight: 600;
+            color: #222;
+            border-bottom: 2px solid #eee;
+            /* Softer border */
+            padding-bottom: 8px;
+            margin-bottom: 16px;
+            margin-top: 32px;
+            font-variant: small-caps;
+            letter-spacing: 0.05em;
+        }
+
+        h3 {
+            font-weight: 600;
+            color: #333;
+        }
+
+        a {
+            text-decoration: none;
+            transition: color 0.2s;
         }
 
         /* Dark mode styles */
         html.dark body {
-            background-color: #1f2937; /* Dark background (Tailwind gray-800) */
-            color: #d1d5db; /* Lighter text (Tailwind gray-300) */
+            background-color: #111;
+            background-image: radial-gradient(#333 1px, transparent 1px);
+            color: #e5e5e5;
+        }
+
+        html.dark .paper-container {
+            background-color: #1f1f1f;
+            /* Dark paper */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            color: #e5e5e5;
+        }
+
+        html.dark h1,
+        html.dark h2,
+        html.dark h3 {
+            color: #fff;
+        }
+
+        html.dark h2 {
+            border-bottom-color: #333;
         }
 
         html.dark .link-custom {
-            color: #93c5fd; /* Lighter blue for links (Tailwind blue-300) */
-        }
-        html.dark .link-custom:hover {
-            text-decoration: underline;
+            color: #93c5fd;
         }
 
-        html.dark section h2,
-        html.dark footer#contact h2 { /* Target section h2 and footer contact h2 for border */
-            border-bottom-color: #4b5563; /* Tailwind gray-600 for borders */
-        }
-        
-        html.dark footer { /* Footer top border */
-            border-top-color: #4b5563; /* Tailwind gray-600 */
-        }
-
-        /* General icon color in contact items for dark mode */
-        html.dark .contact-item i, 
-        html.dark .contact-item .fa-fw,
-        html.dark header .contact-item .fa-envelope, /* Specifically target header envelope icon */
-        html.dark footer .contact-item .fa-envelope { /* Specifically target footer envelope icon */
-             color: #9ca3af !important; /* Tailwind gray-400 for icons. Use !important to override Tailwind utility if necessary */
-        }
-        
-        /* Ensure icons within links still inherit link color */
-        html.dark .link-custom i.fab, 
-        html.dark .link-custom i.fas.fa-external-link-alt,
-        html.dark .link-custom i.fas.fa-file-pdf {
-            color: inherit !important; /* Make sure it inherits from the dark mode link color */
-        }
-
-        /* Light mode link color */
+        /* Link styling */
         .link-custom {
             color: #00008B;
+            /* Elegant blue */
         }
+
         .link-custom:hover {
             text-decoration: underline;
-        }
-        .link-custom i.fab, 
-        .link-custom i.fas.fa-external-link-alt,
-        .link-custom i.fas.fa-file-pdf {
-            color: inherit;
+            color: #003d80;
         }
 
-        /* Light mode specific for envelope icons if they are not part of a .link-custom */
-        header .contact-item .fa-envelope,
-        footer .contact-item .fa-envelope {
-            color: #4b5563; /* Tailwind gray-600 for light mode, matching the original text-gray-600 */
+        /* Ensure icons are navy blue in light mode */
+        .link-custom i,
+        .contact-item i {
+            color: #00008B;
         }
 
-
-        .cgpa-block { display: block; } 
-        @media (min-width: 640px) { 
-            .cgpa-block { display: inline; margin-left: 0.5rem; }
+        /* Ensure icons are light in dark mode */
+        html.dark .link-custom i,
+        html.dark .contact-item i {
+            color: #93c5fd;
+            /* Match the dark mode link color */
         }
-        @media (max-width: 639px) { 
-            .contact-separator { display: none; }
-            .contact-item { 
-                display: block; 
-                text-align: center; 
-                width: 100%; 
-                margin-bottom: 0.25rem; 
+
+        /* Contact Items */
+        .contact-item {
+            color: #555;
+        }
+
+        html.dark .contact-item {
+            color: #aaa;
+        }
+
+        /* Utility */
+        .cgpa-block {
+            display: block;
+        }
+
+        @media (min-width: 640px) {
+            .cgpa-block {
+                display: inline;
+                margin-left: 0.5rem;
             }
-            .contact-item:last-child { margin-bottom: 0; }
+        }
+
+        @media (max-width: 639px) {
+            .contact-separator {
+                display: none;
+            }
+
+            .contact-item {
+                display: block;
+                text-align: center;
+                width: 100%;
+                margin-bottom: 0.25rem;
+            }
+
+            .contact-item:last-child {
+                margin-bottom: 0;
+            }
         }
 
         /* Theme Toggle Switch Styles */
         .theme-switch-wrapper {
             position: fixed;
-            top: 15px;
-            right: 15px;
+            top: 20px;
+            right: 20px;
             z-index: 1000;
-            display: flex;
-            align-items: center;
         }
 
         .theme-switch {
@@ -124,6 +207,7 @@
             bottom: 0;
             border-radius: 24px;
             transition: .4s;
+            background-color: #ccc;
         }
 
         .slider:before {
@@ -135,33 +219,20 @@
             bottom: 3px;
             border-radius: 50%;
             transition: .4s;
-            box-shadow: 0 0 2px rgba(0,0,0,0.3);
+            background-color: white;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
         }
 
-        html:not(.dark) .slider {
-            background-color: #e5e7eb; /* Tailwind gray-200 track */
-        }
-        html:not(.dark) .slider:before {
-             background-color: #1f2937; /* Tailwind gray-800 thumb */
+        input:checked+.slider {
+            background-color: #4b5563;
         }
 
-        html.dark .slider {
-            background-color: #4b5563; /* Tailwind gray-600 track */
-        }
-        html.dark .slider:before {
-            background-color: #e5e7eb; /* Tailwind gray-200 thumb */
-        }
-        
-        input:checked + .slider:before {
+        input:checked+.slider:before {
             transform: translateX(20px);
         }
-
-        .main-container-padded {
-            padding-top: 30px;
-        }
-
     </style>
 </head>
+
 <body class="text-sm">
 
     <div class="theme-switch-wrapper">
@@ -172,7 +243,8 @@
     </div>
 
     <!-- Main container -->
-    <div class="max-w-[695px] mx-auto pb-[38px] px-4 sm:px-[45px] md:px-[53px] main-container-padded">
+    <!-- Main container -->
+    <div class="paper-container">
 
         <!-- Header -->
         <header class="text-center mb-6">
@@ -183,41 +255,50 @@
             <div class="text-xs space-y-1">
                 <div class="flex flex-col sm:flex-row sm:flex-wrap justify-center items-center sm:gap-x-2">
                     <!-- Removed text-gray-600 from here, will be handled by CSS -->
-                    <span class="contact-item"><i class="fas fa-envelope fa-fw mr-1"></i>harshith.j.2003 [at] gmail [dot] com</span>
+                    <span class="contact-item"><i class="fas fa-envelope fa-fw mr-1"></i>harshith.j.2003 [at] gmail
+                        [dot] com</span>
                 </div>
                 <div class="flex flex-col sm:flex-row sm:flex-wrap justify-center items-center sm:gap-x-2 mt-1 sm:mt-0">
-                    <a href="https://www.linkedin.com/in/harshitjoshi2003/" class="contact-item link-custom"><i class="fab fa-linkedin fa-fw mr-1"></i>Harshit</a>
+                    <a href="https://www.linkedin.com/in/harshitjoshi2003/" class="contact-item link-custom"><i
+                            class="fab fa-linkedin fa-fw mr-1"></i>Harshit</a>
                     <span class="contact-separator sm:inline">|</span>
-                    <a href="https://github.com/harshit1912003" class="contact-item link-custom"><i class="fab fa-github fa-fw mr-1"></i>harshit1912003</a>
+                    <a href="https://github.com/harshit1912003" class="contact-item link-custom"><i
+                            class="fab fa-github fa-fw mr-1"></i>harshit1912003</a>
                     <span class="contact-separator sm:inline">|</span>
-                    <a href="https://x.com/HarshitJos2003" class="contact-item link-custom"><i class="fab fa-twitter fa-fw mr-1"></i>HarshitJos2003</a>
+                    <a href="https://x.com/HarshitJos2003" class="contact-item link-custom"><i
+                            class="fab fa-twitter fa-fw mr-1"></i>HarshitJos2003</a>
                 </div>
             </div>
         </header>
         <!-- Overview Section -->
-            <div class="flex justify-between items-center w-full">
-                <h2 class="text-lg font-semibold [font-variant:small-caps] border-b border-black pb-px mb-[1px] flex-grow">Overview</h2>
-                <a href="HarshitJoshi.pdf" target="_blank" class="link-custom font-semibold inline-flex items-center text-xs">
-                    <i class="fas fa-file-pdf fa-fw mr-1"></i>FullCV
-                </a>
-            </div>
-            <p class="text-xs leading-normal mt-[4px]">
-              Recent math postgrad, currently looking for PhD programmes in fields related to stochastic optimization, mathematical finance or games under uncertainity.
-              <br>Can work with Python, C++, R and familiar enough with some basic DSA, learning Rust currently (not going well)
-              <br>My projects and experiences till now have been with Distributionally robust optimization, Classic ML, Deep Learning and elementary NLP, Topological data analysis and Data Envelopment Analysis.
-              <br> feel free to contact :D 
-            </p>
+        <div class="flex justify-between items-center w-full">
+            <h2 class="text-lg font-semibold [font-variant:small-caps] border-b border-black pb-px mb-[1px] flex-grow">
+                Overview</h2>
+            <a href="Full CV.pdf" target="_blank" class="link-custom font-semibold inline-flex items-center text-xs">
+                <i class="fas fa-file-pdf fa-fw mr-1"></i>FullCV
+            </a>
+        </div>
+        <p class="text-xs leading-normal mt-[4px]">
+            Recent math postgrad, currently looking for PhD programmes in fields related to stochastic optimization,
+            mathematical finance or games under uncertainity.
+            <br>Can work with Python, C++, R and familiar enough with some basic DSA, learning Rust currently (not going
+            well)
+            <br>My projects and experiences till now have been with Distributionally robust optimization, Classic ML,
+            Deep Learning and elementary NLP, Topological data analysis and Data Envelopment Analysis.
+            <br> feel free to contact :D
+        </p>
         </section>
         <!-- Experience Section -->
-        <section id="experience" class="mt-4"> 
-            <h2 class="text-lg font-semibold [font-variant:small-caps] border-b border-black pb-px mb-[1px]">Experience</h2>
-            <div class="mt-[2px]"> 
-                <div class="mb-3"> 
+        <section id="experience" class="mt-4">
+            <h2 class="text-lg font-semibold [font-variant:small-caps] border-b border-black pb-px mb-[1px]">Experience
+            </h2>
+            <div class="mt-[2px]">
+                <div class="mb-3">
                     <div class="flex justify-between items-baseline">
                         <h3 class="font-bold text-sm">Research Internship</h3>
                         <span class="text-xs italic">Dec, 2024 - Jan, 2025</span>
                     </div>
-                    <div class="flex justify-between items-baseline text-xs"> 
+                    <div class="flex justify-between items-baseline text-xs">
                         <span class="italic">Dr. Aparna Mehra, HOD, Mathematics IIT Delhi</span>
                         <span>New Delhi</span>
                     </div>
@@ -237,14 +318,15 @@
 
         <!-- Education Section -->
         <section id="education" class="mt-4">
-            <h2 class="text-lg font-semibold [font-variant:small-caps] border-b border-black pb-px mb-[1px]">Education</h2>
+            <h2 class="text-lg font-semibold [font-variant:small-caps] border-b border-black pb-px mb-[1px]">Education
+            </h2>
             <div class="mt-[2px]">
                 <div class="mb-3">
-                    <div class="flex justify-between items-start"> 
+                    <div class="flex justify-between items-start">
                         <h3 class="font-bold text-sm">Indian Institute of Technology Delhi</h3>
-                        <div class="text-xs italic text-right"> 
-                           <span>July, 2023 - May, 2025</span>
-                           <span class="cgpa-block">CGPA: 7.8/10</span>
+                        <div class="text-xs italic text-right">
+                            <span>July, 2023 - May, 2025</span>
+                            <span class="cgpa-block">CGPA: 7.8/10</span>
                         </div>
                     </div>
                     <p class="text-xs italic mt-0.5">M.Sc. in Mathematics</p>
@@ -260,7 +342,7 @@
                     <p class="text-xs italic mt-0.5">B.Sc. in Mathematics</p>
                 </div>
                 <div class="mb-3">
-                    <div> 
+                    <div>
                         <h3 class="font-bold text-sm">Khaitan Public School</h3>
                     </div>
                     <p class="text-xs italic mt-0.5">CBSE: 12th: 95.33%, 10th: 96.20%</p>
@@ -270,49 +352,61 @@
 
         <!-- Projects Section -->
         <section id="projects" class="mt-4">
-            <h2 class="text-lg font-semibold [font-variant:small-caps] border-b border-black pb-px mb-[1px]">Projects</h2>
+            <h2 class="text-lg font-semibold [font-variant:small-caps] border-b border-black pb-px mb-[1px]">Projects
+            </h2>
             <div class="mt-[2px]">
                 <ul class="list-none pl-0">
                     <li class="mb-1.5 text-sm">
-                        The King, the Queen, and the all-seeing Fish 
-                        <a href="https://github.com/harshit1912003/ChessEval" class="link-custom text-xs ml-1"><i class="fab fa-github fa-fw"></i> GitHub</a>
-                        <a href="https://mtl782-chessapp.streamlit.app" class="link-custom text-xs ml-1"><i class="fas fa-external-link-alt fa-fw"></i> Live App</a>
-                    </li>
-                     <li class="mb-1.5 text-sm">
-                        Text Guided Image Clustering
-                        <a href="https://github.com/harshit1912003/TGIC" class="link-custom text-xs ml-1"><i class="fab fa-github fa-fw"></i> GitHub</a>
+                        The King, the Queen, and the all-seeing Fish
+                        <a href="https://github.com/harshit1912003/ChessEval" class="link-custom text-xs ml-1"><i
+                                class="fab fa-github fa-fw"></i> GitHub</a>
+                        <a href="https://mtl782-chessapp.streamlit.app" class="link-custom text-xs ml-1"><i
+                                class="fas fa-external-link-alt fa-fw"></i> Live App</a>
                     </li>
                     <li class="mb-1.5 text-sm">
-                      SnP Diversification
-                      <a href="https://github.com/harshit1912003/SnP500Diversification" class="link-custom text-xs ml-1"><i class="fab fa-github fa-fw"></i> GitHub</a>
-                  </li>
-                     <li class="mb-1.5 text-sm">
+                        Text Guided Image Clustering
+                        <a href="https://github.com/harshit1912003/TGIC" class="link-custom text-xs ml-1"><i
+                                class="fab fa-github fa-fw"></i> GitHub</a>
+                    </li>
+                    <li class="mb-1.5 text-sm">
+                        SnP Diversification
+                        <a href="https://github.com/harshit1912003/SnP500Diversification"
+                            class="link-custom text-xs ml-1"><i class="fab fa-github fa-fw"></i> GitHub</a>
+                    </li>
+                    <li class="mb-1.5 text-sm">
                         Clustering using ToMATo Algorithm
-                        <a href="https://github.com/harshit1912003/TopoDataAnalysis" class="link-custom text-xs ml-1"><i class="fab fa-github fa-fw"></i> GitHub</a>
+                        <a href="https://github.com/harshit1912003/TopoDataAnalysis" class="link-custom text-xs ml-1"><i
+                                class="fab fa-github fa-fw"></i> GitHub</a>
                     </li>
                     <li class="mb-1.5 text-sm">
                         Guided Backpropagation Masking
-                        <a href="https://github.com/harshit1912003/GuidedBackpropMasking" class="link-custom text-xs ml-1"><i class="fab fa-github fa-fw"></i> GitHub</a>
+                        <a href="https://github.com/harshit1912003/GuidedBackpropMasking"
+                            class="link-custom text-xs ml-1"><i class="fab fa-github fa-fw"></i> GitHub</a>
                     </li>
                     <li class="mb-1.5 text-sm">
                         Multi-Category Text Classification
-                        <a href="https://github.com/harshit1912003/C-BiLSTM" class="link-custom text-xs ml-1"><i class="fab fa-github fa-fw"></i> GitHub</a>
+                        <a href="https://github.com/harshit1912003/C-BiLSTM" class="link-custom text-xs ml-1"><i
+                                class="fab fa-github fa-fw"></i> GitHub</a>
                     </li>
                     <li class="mb-1.5 text-sm">
                         N-FLP Robust Linear Regression
-                        <a href="https://github.com/harshit1912003/NFLPEstimatorsEcon" class="link-custom text-xs ml-1"><i class="fab fa-github fa-fw"></i> GitHub</a>
+                        <a href="https://github.com/harshit1912003/NFLPEstimatorsEcon"
+                            class="link-custom text-xs ml-1"><i class="fab fa-github fa-fw"></i> GitHub</a>
                     </li>
                     <li class="mb-1.5 text-sm">
                         FisherFaces and EigenFaces
-                        <a href="https://github.com/harshit1912003/FisherFaces-and-EigenFaces" class="link-custom text-xs ml-1"><i class="fab fa-github fa-fw"></i> GitHub</a>
+                        <a href="https://github.com/harshit1912003/FisherFaces-and-EigenFaces"
+                            class="link-custom text-xs ml-1"><i class="fab fa-github fa-fw"></i> GitHub</a>
                     </li>
                     <li class="mb-1.5 text-sm">
                         Stauffer Grimson Background Subtraction
-                        <a href="https://github.com/harshit1912003/SGBS" class="link-custom text-xs ml-1"><i class="fab fa-github fa-fw"></i> GitHub</a>
+                        <a href="https://github.com/harshit1912003/SGBS" class="link-custom text-xs ml-1"><i
+                                class="fab fa-github fa-fw"></i> GitHub</a>
                     </li>
                     <li class="mb-1.5 text-sm">
                         Axelrod's Tournament
-                        <a href="https://github.com/harshit1912003/AxelrodsTournament" class="link-custom text-xs ml-1"><i class="fab fa-github fa-fw"></i> GitHub</a>
+                        <a href="https://github.com/harshit1912003/AxelrodsTournament"
+                            class="link-custom text-xs ml-1"><i class="fab fa-github fa-fw"></i> GitHub</a>
                     </li>
                 </ul>
             </div>
@@ -320,44 +414,26 @@
 
         <!-- Research Outputs Section -->
         <section id="research" class="mt-4">
-            <h2 class="text-lg font-semibold [font-variant:small-caps] border-b border-black pb-px mb-[1px]">Research Outputs</h2>
-            <div class="mt-[1px]"> 
+            <h2 class="text-lg font-semibold [font-variant:small-caps] border-b border-black pb-px mb-[1px]">Research
+                Outputs</h2>
+            <div class="mt-[1px]">
                 <ul class="list-none pl-0 text-sm">
                     <li class="mb-1.5">
-                        <span class="font-semibold">[S]</span> Novel DEA Models for Non-Homogeneous DMUs with Negative Data <span class="italic text-xs">(Submitted to EJOR) </span> &#128512;
+                        <span class="font-semibold">[S]</span> Novel DEA Models for Non-Homogeneous DMUs with Negative
+                        Data
                     </li>
                     <li class="mb-1.5">
-                        <span class="font-semibold">[T]</span> Non-Convex Data Envelopment Analysis <span class="italic text-xs">(Master's Thesis)</span>
-                        <a href="https://github.com/harshit1912003/DEA" class="link-custom text-xs ml-1"><i class="fab fa-github fa-fw"></i> Code</a>
+                        <span class="font-semibold">[T]</span> Non-Convex Data Envelopment Analysis <span
+                            class="italic text-xs">(Master's Thesis)</span>
+                        <a href="https://github.com/harshit1912003/DEA" class="link-custom text-xs ml-1"><i
+                                class="fab fa-github fa-fw"></i> Code</a>
                     </li>
                 </ul>
             </div>
         </section>
 
         <!-- Contact Section (Footer) -->
-        <footer id="contact" class="mt-6 pt-4 border-t border-gray-300 text-center">
-             <!-- Removed border-black from here, will be handled by CSS -->
-             <h2 class="text-lg font-semibold [font-variant:small-caps] border-b pb-px mb-2">Contact</h2>
-            <div class="text-xs space-y-1">
-                <p>Harshit Joshi</p>
-                <!-- The span below for the email was a normal span, not a link. 
-                     It had an inline style "color: inherit; text-decoration: none;" and an <i> tag with text-gray-600.
-                     We need to ensure the icon in this specific span also changes color.
-                -->
-                <p>
-                  <span class="contact-item" style="text-decoration: none;"> <!-- Made this a contact item for consistency in styling -->
-                    <i class="fas fa-envelope fa-fw mr-1"></i>harshith.j.2003 [at] gmail [dot] com
-                  </span>
-                </p>
-                <div class="flex flex-col sm:flex-row sm:flex-wrap justify-center items-center sm:gap-x-2 mt-1">
-                    <a href="https://www.linkedin.com/in/harshitjoshi2003/" class="contact-item link-custom"><i class="fab fa-linkedin fa-fw mr-1"></i>LinkedIn</a>
-                    <span class="contact-separator sm:inline">|</span>
-                    <a href="https://github.com/harshit1912003" class="contact-item link-custom"><i class="fab fa-github fa-fw mr-1"></i>GitHub</a>
-                    <span class="contact-separator sm:inline">|</span>
-                    <a href="https://harshit1912003.github.io/" class="contact-item link-custom"><i class="fas fa-globe fa-fw mr-1"></i>Portfolio</a>
-                </div>
-            </div>
-        </footer>
+
     </div>
     <script>
         const themeCheckbox = document.getElementById('theme-checkbox');
@@ -377,9 +453,9 @@
         if (savedTheme) {
             applyTheme(savedTheme);
         } else {
-            applyTheme('light'); 
+            applyTheme('light');
         }
-        
+
         themeCheckbox.addEventListener('change', () => {
             if (themeCheckbox.checked) {
                 applyTheme('dark');
@@ -391,4 +467,5 @@
         });
     </script>
 </body>
+
 </html>
